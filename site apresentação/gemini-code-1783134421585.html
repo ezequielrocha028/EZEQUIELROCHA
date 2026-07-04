@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NA MISSÃO | Ezequiel Rocha</title>
+    
+    <!-- Importando as fontes Outfit (textos) e Bebas Neue (Títulos) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* NOVA PALETA DE CORES */
+            --bg-color: #ede7d4;       /* Bege Palha */
+            --surface-color: #ffffff;  /* Branco para cards */
+            --text-main: #05170a;      /* Verde Escuro Quase Preto */
+            --text-light: #2c5e42;     /* Verde Claro (médio) para subtítulos */
+            --accent-green: #2c5e42;   /* Verde Claro (médio) para botões e destaques */
+            --accent-light: #dcceb3;   /* Bege Escuro */
+            --farlands-bg: #05170a;    /* Fundo escuro FarLands */
+            
+            --border-radius: 24px;
+            --border-radius-sm: 16px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            font-family: 'Outfit', sans-serif; 
+            background-color: var(--bg-color); 
+            background-image: url('TEXTURA Bege Palha-1.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            color: var(--text-main); 
+            line-height: 1.6; 
+            overflow-x: hidden; 
+        }
+        
+        /* Aplicando Bebas Neue para todos os títulos */
+        h1, h2, h3, h4, .bebas { 
+            font-family: 'Bebas Neue', sans-serif; 
+            font-weight: 400; 
+            line-height: 1.1; 
+            color: var(--text-main); 
+            letter-spacing: 1px;
+        }
+        
+        a { text-decoration: none; color: inherit; }
+        .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 2; }
+
+        /* Grafismos Decorativos */
+        .grafismo { position: absolute; z-index: 0; opacity: 0.15; pointer-events: none; }
+        .grafismo-dark { top: -20px; right: -50px; width: 350px; }
+        .grafismo-light { bottom: -50px; left: -50px; width: 450px; opacity: 0.1; }
+
+        /* Cabeçalho e Menu */
+        header { padding: 25px 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+        .logo { font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem; color: var(--accent-green); letter-spacing: 2px; }
+        
+        .nav-menu { display: flex; gap: 30px; align-items: center; }
+        .nav-menu a { font-family: 'Outfit', sans-serif; font-size: 0.95rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-main); transition: color 0.3s; opacity: 0.8;}
+        .nav-menu a:hover { color: var(--accent-green); opacity: 1;}
+        
+        .btn-primary { background-color: var(--text-main); color: white; padding: 12px 28px; border-radius: 50px; font-weight: 600; font-size: 0.95rem; transition: all 0.3s ease; display: inline-block; text-transform: uppercase; letter-spacing: 1px;}
+        .btn-primary:hover { background-color: var(--accent-green); transform: translateY(-2px); }
+
+        @media (max-width: 900px) {
+            .nav-menu { order: 3; width: 100%; justify-content: flex-start; overflow-x: auto; padding-bottom: 15px; scrollbar-width: none; -ms-overflow-style: none; gap: 20px;}
+            .nav-menu::-webkit-scrollbar { display: none; }
+            .nav-menu a { white-space: nowrap; font-size: 0.85rem;}
+            header { padding: 20px 0 10px 0; }
+        }
+
+        /* Sessão 1: Hero */
+        .hero { margin-top: 10px; position: relative; border-radius: var(--border-radius); overflow: hidden; height: 70vh; min-height: 500px; display: flex; align-items: flex-end; padding: 40px; background-size: cover; background-position: center; background-repeat: no-repeat; }
+        .hero::after { content: ''; position: absolute; top:0; left:0; width:100%; height:100%; background: linear-gradient(to top, rgba(5,23,10,0.9) 0%, rgba(5,23,10,0.2) 60%, rgba(5,23,10,0) 100%); z-index: 1;}
+        .hero-content { color: white; max-width: 800px; z-index: 2; position: relative;}
+        .hero-subtitle { font-family: 'Outfit', sans-serif; text-transform: uppercase; letter-spacing: 3px; font-size: 0.9rem; margin-bottom: 15px; display: block; opacity: 0.9; font-weight: 800; color: var(--accent-light); }
+        .hero h1 { font-size: clamp(4rem, 8vw, 7rem); margin-bottom: 10px; color: white; }
+        .hero p { font-size: 1.2rem; opacity: 0.9; max-width: 600px; font-weight: 300; }
+
+        /* Sessão 2: Quem Sou Eu */
+        .intro-section { padding: 100px 0; display: grid; grid-template-columns: 1fr; gap: 40px; position: relative; }
+        @media (min-width: 768px) { .intro-section { grid-template-columns: 1fr 1fr; gap: 80px; } }
+        .stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 20px; }
+        .stat-item { background-color: rgba(255,255,255,0.6); backdrop-filter: blur(10px); border: 1px solid var(--accent-light); padding: 20px; border-radius: 12px; }
+        .stat-number { font-family: 'Bebas Neue', sans-serif; font-size: 3.5rem; color: var(--accent-green); line-height: 1; margin-bottom: 5px; }
+        .stat-label { font-size: 0.9rem; color: var(--text-main); font-weight: 600; line-height: 1.3; text-transform: uppercase; letter-spacing: 1px;}
+        .personal-bullets { list-style: none; }
+        .personal-bullets li { margin-bottom: 10px; font-weight: 600; color: var(--text-main); font-size: 1.1rem; line-height: 1.4;}
+        .personal-bullets li span { color: var(--accent-green); margin-right: 10px; }
+        .narrative-text p { font-size: 1.15rem; color: var(--text-main); line-height: 1.8; margin-bottom: 25px; font-weight: 400;}
+
+        /* Sessão 3: O que já fiz (Grade) */
+        .mission-history-section { background-color: var(--accent-light); padding: 80px 40px; margin: 40px 0 80px 0; border-radius: var(--border-radius); overflow: hidden; position: relative;}
+        .mission-history-header { text-align: center; margin-bottom: 60px; position: relative; z-index: 2;}
+        .mission-history-header h2 { font-size: clamp(3rem, 5vw, 4.5rem); color: var(--text-main); }
+        .history-grid { display: grid; grid-template-columns: 1fr; gap: 30px; position: relative; z-index: 2;}
+        @media (min-width: 768px) { .history-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (min-width: 1024px) { .history-grid { grid-template-columns: repeat(3, 1fr); } }
+        .history-card { background-color: var(--surface-color); padding: 40px; border-radius: var(--border-radius); border: 1px solid rgba(0,0,0,0.05); display: flex; flex-direction: column; transition: transform 0.3s ease; }
+        .history-card:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(5,23,10,0.08);}
+        .history-card h3 { color: var(--accent-green); font-size: 2.2rem; margin-bottom: 20px; text-transform: uppercase; }
+        .history-card p { font-size: 1.05rem; color: var(--text-main); line-height: 1.7; }
+
+        /* Sessão 4: O que estou fazendo agora */
+        .current-work-section { padding: 40px 0 80px 0; position: relative;}
+        .current-work-intro { text-align: center; max-width: 800px; margin: 0 auto 60px auto; }
+        .current-work-intro p { font-size: 1.15rem; color: var(--text-main); line-height: 1.8; }
+        
+        .unified-card { background-color: var(--surface-color); border: 1px solid var(--accent-light); border-radius: var(--border-radius); box-shadow: 0 20px 50px rgba(5,23,10,0.05); padding: 60px; position: relative; z-index: 2;}
+        @media (max-width: 768px) { .unified-card { padding: 40px 25px; } }
+
+        .work-module { border-bottom: 1px solid var(--accent-light); padding: 60px 0; }
+        .work-module:first-child { padding-top: 0; }
+        .work-module:last-child { border-bottom: none; padding-bottom: 0; }
+
+        .action-tag { font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 0.9rem; text-transform: uppercase; color: var(--accent-green); display: block; margin-bottom: 10px; letter-spacing: 2px; }
+        .action-title { font-size: clamp(2rem, 4vw, 3rem); text-transform: uppercase; margin-bottom: 10px; line-height: 1.1; color: var(--text-main);}
+        .action-subtitle { font-family: 'Outfit', sans-serif; color: var(--text-light); text-transform: uppercase; font-size: 1rem; margin-bottom: 25px; letter-spacing: 1px; font-weight: 600;}
+        .action-subtitle-list { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; margin-bottom: 20px; line-height: 1.2; color: var(--text-main); letter-spacing: 1px;}
+        .action-body { font-size: 1.15rem; line-height: 1.7; color: var(--text-main); }
+        
+        .work-meta-grid { display: grid; grid-template-columns: 1fr; gap: 30px; margin-top: 35px; padding-top: 30px; border-top: 1px dashed var(--accent-light); }
+        @media (min-width: 768px) { .work-meta-grid { grid-template-columns: 1fr 1fr; } }
+        
+        .action-biblical strong { font-family: 'Outfit', sans-serif; display: block; margin-bottom: 5px; font-size: 1rem; color: var(--text-main); text-transform: uppercase; letter-spacing: 1px;}
+        .action-biblical span { font-family: 'Outfit', sans-serif; font-size: 1rem; color: var(--text-light); font-weight: 600;}
+        
+        .action-bullets { list-style: none; }
+        .action-bullets li { font-family: 'Outfit', sans-serif; font-weight: 800; margin-bottom: 10px; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-main); }
+
+        /* Sessão 5: Missão FarLands */
+        .farlands-section { background-color: var(--farlands-bg); background-image: url('TEXTURA Verde Escuro.jpg'); background-size: cover; color: #ede7d4; padding: 100px 40px; margin-bottom: 80px; border-radius: var(--border-radius); position: relative; overflow: hidden;}
+        .farlands-section h2, .farlands-section h3, .farlands-section h4 { color: #ffffff; }
+        .farlands-module { border-bottom: 1px solid rgba(237,231,212,0.15); padding: 70px 0; position: relative; z-index: 2;}
+        .farlands-module:first-child { padding-top: 0; }
+        .farlands-module:last-child { border-bottom: none; padding-bottom: 0; }
+        
+        .farlands-header-title { font-size: clamp(4rem, 8vw, 6rem); margin-bottom: 5px; }
+        .farlands-header-subtitle { font-family: 'Outfit', sans-serif; color: var(--accent-light); font-size: 1.2rem; font-weight: 400; margin-bottom: 40px; text-transform: uppercase; letter-spacing: 2px;}
+        .text-lead { font-size: 1.2rem; line-height: 1.8; opacity: 0.9; max-width: 800px; font-weight: 300;}
+        
+        .module-title { font-size: clamp(2.5rem, 4vw, 3.5rem); margin-bottom: 15px; color: var(--surface-color); }
+        .module-subtitle { font-family: 'Outfit', sans-serif; font-size: 1.1rem; margin-bottom: 30px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;}
+        .module-overline { font-family: 'Outfit', sans-serif; font-size: 0.9rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; color: var(--accent-light); display: block; margin-bottom: 10px; }
+        
+        .farlands-grid-2 { display: grid; grid-template-columns: 1fr; gap: 50px; }
+        @media (min-width: 768px) { .farlands-grid-2 { grid-template-columns: 1fr 1fr; } }
+        
+        .books-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 25px; margin-top: 40px; }
+        .book-card { background: rgba(237,231,212,0.05); border: 1px solid rgba(237,231,212,0.1); border-radius: var(--border-radius-sm); padding: 30px 20px; text-align: center; transition: transform 0.3s ease; backdrop-filter: blur(5px);}
+        .book-card:hover { transform: translateY(-5px); background: rgba(237,231,212,0.1); border-color: var(--accent-light);}
+        .book-cover { width: 100%; aspect-ratio: 2/3; object-fit: cover; border-radius: 8px; margin-bottom: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.3); border: 1px solid rgba(237,231,212,0.2); }
+        .book-title { font-size: 1.6rem; margin-bottom: 10px; letter-spacing: 1px;}
+        .book-author { font-family: 'Outfit', sans-serif; font-size: 0.95rem; color: var(--accent-light); font-weight: 600; text-transform: uppercase; letter-spacing: 1px;}
+        
+        .ethnic-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-top: 40px; }
+        @media (min-width: 768px) { .ethnic-grid { grid-template-columns: repeat(4, 1fr); gap: 20px; } }
+        .ethnic-square { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: var(--border-radius-sm); opacity: 0.8; transition: opacity 0.3s; border: 2px solid rgba(237,231,212,0.1);}
+        .ethnic-square:hover { opacity: 1; border-color: var(--accent-light);}
+        
+        .jv-list { list-style: none; margin-top: 30px; }
+        .jv-list li { margin-bottom: 20px; font-size: 1.15rem; padding-left: 25px; position: relative; font-weight: 300;}
+        .jv-list li::before { content: '•'; color: var(--accent-light); font-size: 1.5rem; position: absolute; left: 0; top: -5px; }
+        .module-logo { max-width: 180px; margin-bottom: 30px; display: block; }
+
+        /* Sessão 6: Convite à Parceria */
+        .subscription-section { background-color: var(--accent-green); background-image: url('TEXTURA Verde Claro -2.jpg'); background-size: cover; color: white; border-radius: var(--border-radius); padding: 100px 40px; margin-bottom: 80px; overflow: hidden; position: relative; box-shadow: 0 20px 50px rgba(5,23,10,0.15);}
+        @media (max-width: 768px) { .subscription-section { padding: 60px 20px; } }
+        
+        .subs-header { text-align: center; max-width: 800px; margin: 0 auto 60px auto; }
+        .subs-header h2 { font-size: clamp(3.5rem, 6vw, 5rem); color: white; margin-bottom: 20px; line-height: 1; }
+        .subs-header .highlight { color: var(--accent-light); }
+        .subs-header p { font-family: 'Outfit', sans-serif; font-size: 1.25rem; line-height: 1.6; opacity: 0.95; font-weight: 300;}
+        
+        .subs-layout { display: grid; grid-template-columns: 1fr; gap: 50px; }
+        @media (min-width: 1024px) { .subs-layout { grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; } }
+
+        .goal-box { background: rgba(5,23,10,0.3); backdrop-filter: blur(10px); border: 2px solid var(--accent-light); border-radius: var(--border-radius-sm); padding: 40px; text-align: center; margin-bottom: 30px; }
+        .goal-title { font-family: 'Outfit', sans-serif; font-size: 0.95rem; font-weight: 800; text-transform: uppercase; letter-spacing: 3px; color: var(--accent-light); display: block; margin-bottom: 15px; }
+        .goal-numbers { font-family: 'Outfit', sans-serif; font-size: 1.5rem; line-height: 1.4; font-weight: 600; text-transform: uppercase;}
+        .goal-numbers .huge { font-family: 'Bebas Neue', sans-serif; font-size: 5rem; color: white; line-height: 0.9; display: block; margin-bottom: 5px;}
+        .goal-numbers .price { color: var(--accent-light); font-size: 2.5rem; font-family: 'Bebas Neue', sans-serif;}
+        
+        .cost-box { margin-bottom: 40px; }
+        .cost-box h3 { font-size: 2rem; color: var(--accent-light); margin-bottom: 15px; letter-spacing: 1px;}
+        .cost-box p { font-family: 'Outfit', sans-serif; font-size: 1.15rem; opacity: 0.9; line-height: 1.6; font-weight: 300;}
+        
+        .final-impact { font-family: 'Outfit', sans-serif; font-size: 1.25rem; font-weight: 600; line-height: 1.6; border-left: 4px solid var(--accent-light); padding-left: 20px; margin-bottom: 40px; color: white;}
+        
+        .personal-photo-box img { width: 100%; height: auto; max-height: 450px; object-fit: cover; border-radius: var(--border-radius-sm); border: 3px solid rgba(255,255,255,0.1); }
+
+        .exchange-box { background-color: var(--bg-color); background-image: url('TEXTURA Bege Palha-1.jpg'); color: var(--text-main); border-radius: var(--border-radius); padding: 50px; box-shadow: 0 20px 50px rgba(5,23,10,0.3); }
+        @media (max-width: 768px) { .exchange-box { padding: 35px 20px; } }
+        
+        .exchange-box h3 { font-size: 2.8rem; margin-bottom: 10px; color: var(--text-main); }
+        .exchange-box > p { font-family: 'Outfit', sans-serif; font-size: 1.1rem; margin-bottom: 35px; color: var(--text-main); font-weight: 400;}
+        
+        .benefits-list { display: flex; flex-direction: column; gap: 25px; margin-bottom: 40px; }
+        .benefit-item { display: flex; gap: 20px; align-items: flex-start; }
+        .b-icon { font-size: 1.5rem; line-height: 1; flex-shrink: 0; background: var(--text-main); width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; border-radius: 50%; color: var(--accent-light); }
+        .b-text { font-family: 'Outfit', sans-serif; font-size: 1.1rem; font-weight: 600; line-height: 1.5; padding-top: 10px; }
+
+        .whatsapp-cta { text-align: center; padding-top: 35px; border-top: 1px solid rgba(5,23,10,0.1); }
+        .btn-whatsapp { display: block; background-color: #25D366; color: white; padding: 22px 30px; border-radius: 50px; font-family: 'Outfit', sans-serif; font-size: 1.1rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3); transition: all 0.3s ease; margin-bottom: 30px; }
+        .btn-whatsapp:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(37, 211, 102, 0.4); }
+        
+        .qr-container { display: flex; flex-direction: column; align-items: center; gap: 15px; }
+        .qr-container p { font-family: 'Outfit', sans-serif; font-size: 0.95rem; color: var(--text-main); font-weight: 800; text-transform: uppercase; letter-spacing: 1px;}
+        .qr-container img { width: 180px; height: 180px; border-radius: 16px; border: 2px solid var(--text-main); padding: 10px; background: white; }
+
+        /* Rodapé e Animações */
+        footer { text-align: center; padding: 40px 0; color: var(--text-main); font-size: 0.95rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;}
+        .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+        
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <header>
+            <div class="logo">NA MISSÃO</div>
+            
+            <nav class="nav-menu">
+                <a href="#quem-sou">Quem Sou Eu</a>
+                <a href="#historico">Trajetória</a>
+                <a href="#atuacao">Atuação</a>
+                <a href="#farlands">Missão FarLands</a>
+            </nav>
+
+            <a href="#parceria" class="btn-primary">Caminhar Junto</a>
+        </header>
+
+        <!-- SESSÃO 01: CAPA -->
+        <section class="hero fade-up" style="background-image: url('COLOQUE_O_NOME_DA_SUA_FOTO_AQUI.jpg');">
+            <div class="hero-content">
+                <span class="hero-subtitle">Missionário por Vocação</span>
+                <h1>NA MISSÃO <br><span style="color: var(--accent-light);">Ezequiel Rocha</span></h1>
+                <p>Uma jornada dedicada a traduzir o amor do Criador aos povos esquecidos.</p>
+            </div>
+        </section>
+
+        <!-- SESSÃO 02: QUEM SOU EU -->
+        <section id="quem-sou" class="intro-section">
+            <!-- Grafismo Decorativo Escuro -->
+            <img src="Vetor Grafismos -09.png" alt="" class="grafismo grafismo-dark">
+            
+            <div class="intro-left fade-up">
+                <div style="margin-bottom: 40px; position: relative; z-index: 2;">
+                    <span class="hero-subtitle" style="color: var(--accent-green);">Quem sou eu?</span>
+                    <h2 style="font-size: clamp(3.5rem, 5vw, 5rem); margin-bottom: 25px;">Ezequiel<br>Rocha</h2>
+                    <img src="COLOQUE_FOTO_PERFIL_AQUI.jpg" alt="Ezequiel Rocha" style="width: 100%; height: 280px; object-fit: cover; border-radius: var(--border-radius-sm); margin-bottom: 30px; border: 1px solid var(--accent-light);">
+                    <ul class="personal-bullets">
+                        <li><span>→</span> Pode me chamar de Zeck, Zeca...</li>
+                        <li><span>→</span> Missionário por Vocação</li>
+                        <li><span>→</span> Igreja local: @raravgp</li>
+                        <li><span>→</span> Formado em Produção Multimídia</li>
+                        <li><span>→</span> Graduando em Serviço Social</li>
+                    </ul>
+                </div>
+                <div class="narrative-text" style="position: relative; z-index: 2;">
+                    <p>Fui alcançado por Jesus de forma inesperada, ouvindo histórias de avivamento em um momento em que sequer frequentava a igreja. Essa experiência me transformou e trouxe uma clareza imediata: eu precisava anunciar o amor de Deus a todos.</p>
+                    <p>A fé não me permitiu ficar parado. Fui para as ruas, praças, presídios, vários estados e até fronteiras. Entendi que meu coração batia pela mesma causa de Deus: alcançar aqueles que a sociedade insiste em esquecer. Compreendi que a cruz não é apenas um lugar de perdão, mas o ponto de partida de um amor que se move em direção à dor do outro.</p>
+                </div>
+            </div>
+
+            <div class="intro-right fade-up" style="transition-delay: 0.2s; position: relative; z-index: 2;">
+                <h3 style="font-size: 2rem; color: var(--text-main); margin-bottom: 5px;">Os Caminhos Percorridos</h3>
+                <p style="font-size: 1rem; color: var(--text-light); margin-bottom: 25px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">A minha pequena caminhada hoje carrega:</p>
+                
+                <div class="stats-grid" style="margin-bottom: 40px;">
+                    <div class="stat-item"><div class="stat-number">2</div><div class="stat-label">Países da América do Sul</div></div>
+                    <div class="stat-item"><div class="stat-number">7</div><div class="stat-label">Estados Brasileiros</div></div>
+                    <div class="stat-item"><div class="stat-number">+10</div><div class="stat-label">Cidades</div></div>
+                    <div class="stat-item"><div class="stat-number">2</div><div class="stat-label">Territórios Indígenas</div></div>
+                    <div class="stat-item" style="grid-column: span 2; text-align: center;"><div class="stat-number">3</div><div class="stat-label">Povos Indígenas trabalhados diretamente</div></div>
+                </div>
+                
+                <img src="COLOQUE_FOTO_CAMINHOS_AQUI.jpg" alt="Ezequiel na Missão" style="width: 100%; height: 280px; object-fit: cover; border-radius: var(--border-radius-sm); margin-bottom: 30px; border: 1px solid var(--accent-light);">
+                
+                <div class="narrative-text">
+                    <p>Sou um missionário por vocação. Minha jornada de obediência já me levou a vários estados e até países. Hoje, encaro minha formação acadêmica como uma arma para a missão. Minha formação em Produção Multimídia e a minha graduação em Serviço Social têm um único objetivo: expandir o Reino. Uso essas ferramentas de forma intencional para dar voz aos esquecidos, combater a injustiça e levar esperança de maneira prática e transformadora.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SESSÃO 03: GRADE - O QUE JÁ FIZ -->
+        <section id="historico" class="mission-history-section fade-up">
+            <div class="mission-history-header">
+                <span class="hero-subtitle" style="color: var(--text-light);">Um pouco da minha pequena caminhada</span>
+                <h2>O que eu já fiz como um missionário</h2>
+            </div>
+            <div class="history-grid">
+                <div class="history-card">
+                    <h3>Paraguai</h3>
+                    <p>No Paraguai, trabalhei no fortalecimento da comunidade cristã local e no serviço direto a crianças e populações em situação de vulnerabilidade. Foi nesse cenário que o meu chamado se tornou inegável: tive a certeza absoluta de que minha vida seria dedicada a alcançar os esquecidos. Essa missão foi o 'sim' que abriu caminho para toda a minha jornada.</p>
+                </div>
+                <div class="history-card">
+                    <h3>Palhaçaria</h3>
+                    <p>Através do palhaço 'Zeca', encontrei uma ferramenta poderosa para comunicar a esperança de forma acessível e leve. Já levei a palhaçaria para as ruas, hospitais e eventos, atuando tanto no Brasil quanto em outros países. O principal objetivo do Zeca é quebrar barreiras por meio da arte, levando uma mensagem contextualizada que toca o coração não apenas das crianças, mas também dos adultos que precisam de alegria e acolhimento.</p>
+                </div>
+                <div class="history-card">
+                    <h3>Projeto Agreste</h3>
+                    <p>Atuei diretamente em um projeto de justiça e transformação social em um bairro vulnerável da nossa cidade. Em parceria com uma escolinha de futebol, atendemos 150 crianças e adolescentes. Nosso trabalho unia o cuidado físico e espiritual: oferecíamos café da manhã e devocionais, mas também fomos além das quatro paredes. Realizamos cultos, bazares solidários, evangelismo nas ruas e visitas domiciliares, apresentando o Evangelho de forma prática às famílias.</p>
+                </div>
+                <div class="history-card">
+                    <h3>Sertão do Seridó</h3>
+                    <p>No Sertão do Seridó, visitei uma pequena comunidade rural de aproximadamente 70 pessoas para apoiar a plantação de uma igreja iniciada por um amigo missionário. Nosso foco foi o evangelismo relacional: sentamos com as famílias, oramos juntos e construímos laços verdadeiros. O marco dessa ação foi a entrega das 'Bíblias de Taipa' — uma edição traduzida e adaptada para a linguagem sertaneja.</p>
+                </div>
+                <div class="history-card">
+                    <h3>Plantação Indígena</h3>
+                    <p>Atuei intensamente na região amazônica, tanto no lado brasileiro quanto na fronteira guianense, junto com a FarLads. Nosso trabalho foi focado na plantação e no fortalecimento de igrejas em comunidades indígenas. Por se tratarem de povos ainda pouco alcançados, atuei na construção de fundamentos através de estudos bíblicos, na realização de cultos e no trabalho direto com crianças. O objetivo central é sempre traduzir o amor de Deus, entregando um Evangelho que seja fiel às Escrituras, mas profundamente respeitoso e culturalmente relevante para a realidade de cada povo.</p>
+                </div>
+                <div class="history-card">
+                    <h3>Ilha do Marajó</h3>
+                    <p>Através da FarLands em parceria com a Missio Dei Marajó, atuei na linha de frente no serviço aos alunos da escola local. Fomos sujar os pés na realidade nua e crua. Caminhei por lixões, atuei em casas de acolhimento e realizei evangelismo de porta em porta. Foi um tempo de abraçar as margens da sociedade, provando que o amor que ensinamos só faz sentido quando desce às trincheiras mais profundas do esquecimento humano.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SESSÃO 04: O QUE ESTOU FAZENDO AGORA -->
+        <section id="atuacao" class="current-work-section">
+            <div class="current-work-intro fade-up">
+                <span class="hero-subtitle" style="color: var(--accent-green);">A nova estação</span>
+                <h2 style="font-size: clamp(3rem, 5vw, 4.5rem); margin-bottom: 25px;">O que eu estou fazendo agora?</h2>
+                <p>A caminhada da fé sempre nos pede para abraçar o desconhecido, mas Deus tem me dado direções muito claras para esta nova estação. Hoje, sirvo como missionário pela organização FarLands, o solo onde minha vocação encontra a estrutura necessária para se expandir e dar frutos concretos.</p>
+            </div>
+            
+            <div class="unified-card">
+                
+                <div class="work-module">
+                    <span class="action-tag">INTEGRAÇÃO MISSIONÁRIA</span>
+                    <h3 class="action-title">1. INTEGRAÇÃO À IGREJA CASEIRA</h3>
+                    <div class="action-subtitle">COMUNIDADE CRISTÃ CONVERGÊNCIA</div>
+                    <div class="action-body">
+                        <p>A igreja do Novo Testamento cresceu e se fortaleceu nos lares. A dinâmica das cartas paulinas frequentemente saúda <em>"a igreja que se reúne na casa de alguém"</em> (como Priscila e Áquila, ou Filemom). A vida comunitária em pequena escala gera o ambiente perfeito para a prestação de contas, o pastoreio mútuo e o exercício genuíno dos <em>"uns aos outros"</em>.</p>
+                        <p style="margin-top: 15px;">Acreditamos que a missão nasce e se sustenta na comunidade. Nossos missionários carecem dessa vivência no dia a dia, do pastoreio mútuo e o discipulado orgânico por meio da dinâmica e da vida de uma Igreja Caseira.</p>
+                    </div>
+                    <div class="work-meta-grid">
+                        <div class="action-biblical">
+                            <strong>Fundamento Bíblicos:</strong>
+                            <span>Atos 2:46-47 e Romanos 16:5<br>Colossenses 4:15, Filemom 1:2.</span>
+                        </div>
+                        <ul class="action-bullets">
+                            <li>→ PLANTAÇÃO DE IGREJA</li>
+                            <li>→ DISCIPULADO</li>
+                            <li>→ PASTOREIO</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="work-module">
+                    <span class="action-tag">Princípios Missionários</span>
+                    <h3 class="action-title">2. CONSOLIDAÇÃO DE PRINCÍPIOS MISSIONÁRIOS</h3>
+                    <div class="action-body">
+                        <p>O movimento apostólico na Igreja Primitiva não enviava ninguém ao campo sem antes consolidar princípios de vida e ministério. Ele instrui Timóteo a <em>"transmitir a homens fiéis, que sejam idôneos para também ensinarem a outros"</em>. Jesus passou três anos consolidando o DNA do Reino no coração de Seus discípulos antes de enviá-los de forma definitiva no Pentecostes. O tempo de base é extremamente importante <em>para construção de uma visão bíblica e saudável para o envio aos povos transculturais não alcançados.</em></p>
+                    </div>
+                    <div class="work-meta-grid">
+                        <div class="action-biblical">
+                            <strong>Fundamento Bíblicos:</strong>
+                            <span>2 Timóteo 2:2 e Lucas 6:40</span>
+                        </div>
+                        <ul class="action-bullets">
+                            <li>→ VISÃO BÍBLICA</li>
+                            <li>→ CARÁTER</li>
+                            <li>→ ESTUDO</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="work-module">
+                    <span class="action-tag">Missiologia Transcultural</span>
+                    <h3 class="action-title">3. PRODUÇÃO LITERÁRIA EM MISSIOLOGIA TRANSCULTURAL</h3>
+                    <div class="action-body">
+                        <p><em>"Escreve a visão e torna-a bem legível sobre tábuas, para que a possa ler o que correndo passa"</em> (Hc 2:2). A produção literária tem o poder de registrar, perenizar e multiplicar o conhecimento. Lucas escreveu seu Evangelho e o livro de Atos de forma ordenada para que o conhecimento da missão fosse consolidado. Escrever livros em missiologia é registrar a história de Deus entre as nações e equipar a igreja que caminha.</p>
+                    </div>
+                    <div class="work-meta-grid">
+                        <div class="action-biblical">
+                            <strong>Fundamento Bíblicos:</strong>
+                            <span>Habacuque 2:2 e Lucas 1:1-4</span>
+                        </div>
+                        <ul class="action-bullets">
+                            <li>→ PIONEIRISMO</li>
+                            <li>→ ARTIGOS</li>
+                            <li>→ LIVROS</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="work-module">
+                    <span class="action-tag">TRADUÇÃO BÍBLICA</span>
+                    <h3 class="action-title">4. PRINCÍPIOS DA TRADUÇÃO BÍBLICA</h3>
+                    <div class="action-subtitle-list">
+                        I. NHEENGATU<br>
+                        II. KHÉOUL GUYANE<br>
+                        III. MBYÁ GUARANI
+                    </div>
+                    <div class="action-body">
+                        <p>No Pentecostes, o Espírito Santo não exigiu que a multidão aprendesse o aramaico ou o grego; em vez disso, as maravilhas de Deus foram ouvidas <em>"cada um na sua própria língua materna"</em>. O cumprimento da Grande Comissão exige que toda <em>"nação, tribo, povo e língua"</em> adore diante do trono. Dedicar-se à tradução é o ato mais profundo de contextualização do Evangelho: dar a um povo o direito de ouvir a Deus na língua do seu coração.</p>
+                    </div>
+                    <div class="work-meta-grid">
+                        <div class="action-biblical">
+                            <strong>Fundamento Bíblicos:</strong>
+                            <span>Apocalipse 7:9 e Atos 2:6, 11</span>
+                        </div>
+                        <ul class="action-bullets">
+                            <li>→ CONTEXTUALIZAÇÃO</li>
+                            <li>→ IDIOMAS</li>
+                            <li>→ ETNIAS</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="work-module">
+                    <span class="action-tag">Servir a Igreja</span>
+                    <h3 class="action-title">5. SERVIR A IGREJA LOCAL COM UMA VISÃO MISSIONÁRIA</h3>
+                    <div class="action-body">
+                        <p>Os ministérios e vocações (como os missionários e evangelistas) foram dados por Deus para <em>"o aperfeiçoamento dos santos, para a obra do ministério, para edificação do corpo de Cristo"</em>. A base missionária não é um fim em si mesma, ela serve à Igreja. Assim como Paulo ansiava ver os romanos para <em>"repartir algum dom espiritual, a fim de que fossem fortalecidos"</em>, a FarLands em Campinas servirá para encorajar e avivar a igreja local.</p>
+                    </div>
+                    <div class="work-meta-grid">
+                        <div class="action-biblical">
+                            <strong>Fundamento Bíblicos:</strong>
+                            <span>Efésios 4:11-12 e Romanos 1:11-12</span>
+                        </div>
+                        <ul class="action-bullets">
+                            <li>→ COMPARTILHAR</li>
+                            <li>→ SERVIÇO</li>
+                            <li>→ ENCORAJAMENTO</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="work-module">
+                    <span class="action-tag">Servir a Igreja</span>
+                    <h3 class="action-title">6. MOBILIZAR IMERSÕES DE CARÁTER MISSIOLÓGICO</h3>
+                    <div class="action-body">
+                        <p>Os apóstolos sempre passava pelas igrejas locais para despertá-las, coletar ofertas para os campos e pedir que elas o <em>"encaminhassem na sua viagem"</em> (mobilização e parceria).</p>
+                        <p style="margin-top: 15px;">Para as igrejas brasileiras, uma imersão transcultural faz com que empreendimentos missionários deixa de ser um <em>"projeto de curto prazo"</em> e passa a ser uma escola de maturidade. Ela transforma uma igreja que apenas envia recursos em uma comunidade que sabe habitar e respeitar, gerando um impacto de longo prazo nos lugares onde ainda não há presença de igrejas e missionários.</p>
+                    </div>
+                    <div class="work-meta-grid">
+                        <div class="action-biblical">
+                            <strong>Fundamento Bíblicos:</strong>
+                            <span>Atos 1:8 e Romanos 15:24</span>
+                        </div>
+                        <ul class="action-bullets">
+                            <li>→ COMPARTILHAR</li>
+                            <li>→ SERVIÇO</li>
+                            <li>→ ENCORAJAMENTO</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SESSÃO 05: MISSÃO FARLANDS -->
+        <section id="farlands" class="farlands-section fade-up">
+            
+            <!-- Grafismo Decorativo Claro -->
+            <img src="Vetor Grafismos -08.png" alt="" class="grafismo grafismo-light">
+
+            <div class="farlands-module">
+                <h2 class="farlands-header-title">MISSÃO FARLANDS</h2>
+                <h3 class="farlands-header-subtitle">O evangelho de forma culturalmente relevante</h3>
+                <p class="text-lead">A Missiologia da FarLands propõe uma ruptura radical com os modelos missionários colonialistas e paternalistas históricos. Nossa abordagem fundamenta-se em uma missiologia encarnacional, ecológica, contextual, linguística e antropológica, cujo objetivo final não é a ocidentalização do ser transcultural alcançado para que ele se torne cristão, mas sim o florescimento de uma igreja genuinamente bíblica e autóctone, nossa metodologia se dá na proclamação de um evangelho bíblico e culturalmente relevante, para que todos os povos exerçam o seu sacerdócio cultural ao Criador de tudo e todos.</p>
+            </div>
+
+            <div class="farlands-module fade-up">
+                <h2 class="module-title">Editorial FarLands</h2>
+                <h3 class="module-subtitle" style="color: var(--accent-light);">PRODUÇÃO EVANGELÍSTICA & DEVOCIONAL A IGREJA BRASILEIRA</h3>
+                
+                <div class="farlands-grid-2">
+                    <div>
+                        <h4 style="font-size: 1.6rem; margin-bottom: 15px; letter-spacing: 1px;"><strong>Escrita Indígena</strong></h4>
+                        <p style="opacity: 0.9; margin-bottom: 25px; font-weight: 300;">A tradução da Bíblia é o primeiro passo, mas se não ensinarmos o povo a ler e se não deixarmos livros — uma literatura teológica robusta escrita ou traduzida para o contexto deles —, nós os condenamos a uma fé superficial.</p>
+                        <p style="opacity: 0.9; font-weight: 300;">O livro é o professor que permanece quando o missionário vai embora. Deixar livros nas mãos de um povo é garantir que eles tenham a chave para a própria reforma e crescimento, sem depender perpetuamente do ocidente."</p>
+                    </div>
+                    <div>
+                        <h4 style="font-size: 1.6rem; margin-bottom: 15px; letter-spacing: 1px;"><strong>Oralidade Indígena</strong></h4>
+                        <p style="opacity: 0.9; margin-bottom: 25px; font-weight: 300;">Quando o missionário vai embora de um povo letrado, o registro em áudio é o que liberta um povo de tradição oral da dependência estrangeira. Pregar sermões passageiros não basta; sem um registro durável — um <em><strong>"livro falado"</strong></em> —, a mensagem se perde no tempo.</p>
+                        <p style="opacity: 0.9; font-weight: 300;">Quando gravamos a Bíblia, as histórias e os cânticos na língua e no ritmo local, passamos a autonomia para os próprios indígenas. O áudio permite que o ancião ouça a verdade repetidamente em seu próprio formato de aprendizado, garantindo que a igreja nativa cresça guiada pelo Espírito Santo, sem precisar depender para sempre de um mediador estrangeiro.</p>
+                    </div>
+                </div>
+
+                <h3 class="module-subtitle" style="margin-top: 60px;">LIVROS:</h3>
+                
+                <!-- ESPAÇO PARA AS FOTOS DOS LIVROS -->
+                <div class="books-grid">
+                    <div class="book-card">
+                        <img src="imagens/NA PONTA DA LANÇA.png" alt="Na Ponta da Lança" class="book-cover">
+                        <h4 class="book-title">Na Ponta da Lança</h4>
+                        <p class="book-author">Steve Saint</p>
+                    </div>
+                    <div class="book-card">
+                        <img src="FOTO_LIVRO_UBEBEWERAWA.jpg" alt="Ūbēbēwerawa" class="book-cover">
+                        <h4 class="book-title">Ūbēbēwerawa</h4>
+                        <p class="book-author">WiraWasú Baré</p>
+                    </div>
+                    <div class="book-card">
+                        <img src="FOTO_LIVRO_HARYPORIA.jpg" alt="Haryporia Tapy’yia Miwan" class="book-cover">
+                        <h4 class="book-title">Haryporia Tapy’yia Miwan</h4>
+                        <p class="book-author">Arehum Saterê</p>
+                    </div>
+                    <div class="book-card">
+                        <img src="FOTO_LIVRO_UPINIMA.jpg" alt="Ūpinima Yēga Purãgawa Mateus" class="book-cover">
+                        <h4 class="book-title">Ūpinima Yēga Purãgawa Mateus</h4>
+                        <p class="book-author">Pisasua Yēgatu</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="farlands-module fade-up">
+                <span class="module-overline">Formação Missiológica</span>
+                <h2 class="module-title" style="font-size: clamp(2.5rem, 4vw, 3.5rem); margin-top: 0;">Escola de Transculturalidade & Missiologia da FarLands</h2>
+                
+                <p style="opacity: 0.9; margin-bottom: 20px; font-weight: 300;">A Escola de Missiologia da FarLands propõe uma ruptura radical com os modelos missionários colonialistas, institucionais e paternalistas históricos. Nossa visão e abordagem fundamenta-se em uma missiologia encarnacional, linguística, contextual e antropológica, cujo objetivo final não é a "urbanização" ou a "ocidentalização" desses povos para que se tornem cristãos, mas sim o florescimento de expressões eclesiais genuinamente autóctones entre os 4 povos étnicos menos alcançados do Brasil: <strong>Indígenas Ciganos, Quilombolas e Sertanejos.</strong></p>
+                <p style="opacity: 0.9; font-weight: 300;">Nossa metologia se da na proclamação de um evangelho bíblico e culturalmente relevante, para que todos os povos exerçam o seu sacerdócio cultural ao Criador de tudo e todos.</p>
+            </div>
+
+            <div class="farlands-module fade-up">
+                <span class="module-overline">Conscientização Missionária</span>
+                <h2 class="module-title" style="font-size: clamp(2.5rem, 4vw, 3.5rem); margin-top: 0;">Iniciativa Janela Verde</h2>
+                <h3 class="module-subtitle" style="color: var(--accent-light);">Conectar o Corpo de Cristo onde a Igreja está, para construir o Corpo de Cristo onde a Igreja não está.</h3>
+                
+                <p style="opacity: 0.9; margin-bottom: 20px; font-weight: 300;"><strong>A Iniciativa Janela Verde é um movimento missionário em direção aos povos das Florestas Tropicais.</strong></p>
+                <p style="opacity: 0.9; margin-bottom: 40px; font-weight: 300;">O conceito de Janela Verde refere-se à zona das florestas tropicais do mundo, localizada entre as latitudes 23,5° Norte e 23,5° Sul. Esta área abriga a maior biodiversidade do planeta e, simultaneamente, um dos maiores desafios missionários da atualidade: mais de 2.200 grupos étnicos tribais que ainda não foram alcançados pelo evangelho.</p>
+                
+                <p style="font-size: 1.15rem; color: #ffffff;"><strong>Para alcançar uma missão biblicamente saudável, a iniciativa utiliza os pilares:</strong></p>
+                <ul class="jv-list">
+                    <li><strong>Envolver (Engage):</strong> Investir tempo e recursos para viver entre eles.</li>
+                    <li><strong>Capacitar (Empower):</strong> Colocar o líder indígena no "assento do motorista".</li>
+                    <li><strong>Encorajar (Encourage):</strong> Caminhar juntos em unidade, superando o individualismo no campo.</li>
+                </ul>
+            </div>
+
+            <div class="farlands-module fade-up">
+                <span class="module-overline">Integração Missionária & Tradução Indígena</span>
+                <h2 class="module-title" style="font-size: clamp(2.5rem, 4vw, 3.5rem); margin-top: 0;">Base Missionária FarLands</h2>
+                <h4 style="font-size: 1.3rem; color: var(--accent-light); margin-bottom: 15px; letter-spacing: 1px;"><strong>O Propósito da Base</strong></h4>
+                <p style="opacity: 0.9; max-width: 800px; font-weight: 300;">O projeto da Base FarLands Campinas fundamenta-se no modelo apostólico do Novo Testamento: uma base fundamentada na comunhão diária (Igreja Caseira), dedicada ao ensino sólido (Consolidação), empenhada em registrar e compartilhar a sabedoria (Produção Literária), focada em levar o Evangelho de forma compreensível aos povos isolados (Tradução), comprometida com o fortalecimento dos irmãos (Serviço à Igreja) e catalisadora do envio a povos não alcançados. (Mobilização).</p>
+            </div>
+
+        </section>
+
+        <!-- SESSÃO 06: O CONVITE À ALIANÇA -->
+        <section id="parceria" class="subscription-section fade-up">
+            <div class="subs-header">
+                <h2>Um convite para a <span class="highlight">Parceria.</span></h2>
+                <p>A missão exige dedicação integral, e para manter os pés no solo, minha meta imediata é formar uma aliança com <strong>20 parceiros</strong> que possam ofertar <strong>R$ 50 mensais</strong> (o valor é totalmente livre, pode ser mais ou menos, o que importa é estarmos juntos).</p>
+            </div>
+
+            <div class="subs-layout">
+                <div>
+                    <div class="goal-box">
+                        <span class="goal-title">META IMEDIATA</span>
+                        <div class="goal-numbers">
+                            <span class="huge">20</span> Parceiros <br>
+                            <span class="price">R$ 50</span> Mensais
+                        </div>
+                    </div>
+
+                    <div class="cost-box">
+                        <h3>Para onde vai esse recurso?</h3>
+                        <p>Ele cobre estritamente o meu custo básico de sobrevivência e operação: mensalidade da base, alimentação e transporte.</p>
+                    </div>
+
+                    <p class="final-impact">Você não está apenas enviando uma oferta. Você está traduzindo a Palavra, formando missionários e construindo dignidade onde a esperança ainda não pisou.</p>
+                    
+                    <div class="personal-photo-box">
+                        <img src="COLOQUE_SUA_FOTO_PARCERIA_AQUI.jpg" alt="Ezequiel Rocha">
+                    </div>
+                </div>
+
+                <div>
+                    <div class="exchange-box">
+                        <h3>A nossa troca <br><span class="highlight" style="font-size: 1.2rem; font-family: 'Outfit', sans-serif;">(O que você recebe)</span></h3>
+                        <p>Nesta aliança, a missão é 100% compartilhada. Além de saber que sua oferta se transforma em pão e Evangelho no campo, você caminha comigo e recebe:</p>
+                        
+                        <div class="benefits-list">
+                            <div class="benefit-item">
+                                <div class="b-icon">🔥</div>
+                                <div class="b-text">Devocionais semanais forjados na realidade do campo.</div>
+                            </div>
+                            <div class="benefit-item">
+                                <div class="b-icon">🔑</div>
+                                <div class="b-text">Acesso exclusivo aos bastidores, viagens e rotina de estudos.</div>
+                            </div>
+                            <div class="benefit-item">
+                                <div class="b-icon">📚</div>
+                                <div class="b-text">Conteúdo educativo, indicações de livros e notícias globais sobre a missão.</div>
+                            </div>
+                            <div class="benefit-item">
+                                <div class="b-icon">🌍</div>
+                                <div class="b-text">Guias de oração estratégicos pelos povos não alcançados.</div>
+                            </div>
+                        </div>
+
+                        <div class="whatsapp-cta">
+                            <a href="https://wa.me/5511974679458" class="btn-whatsapp" target="_blank">
+                                Chamar no WhatsApp
+                            </a>
+                            <div class="qr-container">
+                                <p>Ou escaneie o QR Code:</p>
+                                <img src="COLOQUE_QR_CODE_WPP_AQUI.png" alt="QR Code WhatsApp">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SESSÃO 07: O RODAPÉ -->
+        <footer>
+            <p>&copy; 2026 Ezequiel Rocha. Todos os direitos reservados.</p>
+            <p style="margin-top: 10px; opacity: 0.8;">pixezequielrocha@gmail.com | (11) 97467-9458</p>
+        </footer>
+    </div>
+
+    <!-- Script de animação e movimentação suave -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
