@@ -14,6 +14,9 @@ isso evita links quebrados).
 - `etnia-cigano.jpg`
 - `etnia-quilombola.jpg`
 - `etnia-sertanejo.jpg`
+- `foto-perfil.jpg`
+- `foto-caminhos.jpg`
+- `qrcode-whatsapp.png`
 
 ## ⬜ Faltam enviar
 
@@ -24,11 +27,8 @@ isso evita links quebrados).
 | `textura-verde-claro.jpg` | Fundo da seção "Convite à Parceria" | qualquer, paisagem, leve |
 | `foto-capa.jpg` | Foto grande do topo (capa/hero) | horizontal, boa resolução (ex: 1600×1000) |
 | `grafismo-escuro.png` | Grafismo decorativo (seção "Quem sou eu") | PNG com fundo transparente |
-| `foto-perfil.jpg` | Sua foto de perfil (seção "Quem sou eu") | quadrada ou 4:3 |
-| `foto-caminhos.jpg` | Foto "Os Caminhos Percorridos" | quadrada ou 4:3 |
 | `grafismo-claro.png` | Grafismo decorativo (seção "Missão FarLands") | PNG com fundo transparente |
 | `foto-parceria.jpg` | Sua foto na seção "Convite à Parceria" | vertical ou paisagem |
-| `qrcode-whatsapp.png` | QR Code do WhatsApp | quadrado |
 
 ## Regra de ouro
 Sempre que enviar um arquivo, salve-o **exatamente com o nome da tabela acima**
