@@ -100,8 +100,9 @@
         .history-grid { display: grid; grid-template-columns: 1fr; gap: 30px; position: relative; z-index: 2;}
         @media (min-width: 768px) { .history-grid { grid-template-columns: repeat(2, 1fr); } }
         @media (min-width: 1024px) { .history-grid { grid-template-columns: repeat(3, 1fr); } }
-        .history-card { background-color: var(--surface-color); padding: 40px; border-radius: var(--border-radius); border: 1px solid rgba(0,0,0,0.05); display: flex; flex-direction: column; transition: transform 0.3s ease; }
+        .history-card { background-color: var(--surface-color); padding: 40px; border-radius: var(--border-radius); border: 1px solid rgba(0,0,0,0.05); display: flex; flex-direction: column; transition: transform 0.3s ease; overflow: hidden; }
         .history-card:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(5,23,10,0.08);}
+        .history-photo { width: calc(100% + 80px); margin: -40px -40px 25px -40px; aspect-ratio: 16/10; object-fit: cover; }
         .history-card h3 { color: var(--accent-green); font-size: 2.2rem; margin-bottom: 20px; text-transform: uppercase; }
         .history-card p { font-size: 1.05rem; color: var(--text-main); line-height: 1.7; }
 
@@ -301,10 +302,12 @@
                     <p>No Paraguai, trabalhei no fortalecimento da comunidade cristã local e no serviço direto a crianças e populações em situação de vulnerabilidade. Foi nesse cenário que o meu chamado se tornou inegável: tive a certeza absoluta de que minha vida seria dedicada a alcançar os esquecidos. Essa missão foi o 'sim' que abriu caminho para toda a minha jornada.</p>
                 </div>
                 <div class="history-card">
+                    <img src="imagens/historia-palhacaria.jpg" alt="Palhaçaria" class="history-photo">
                     <h3>Palhaçaria</h3>
                     <p>Através do palhaço 'Zeca', encontrei uma ferramenta poderosa para comunicar a esperança de forma acessível e leve. Já levei a palhaçaria para as ruas, hospitais e eventos, atuando tanto no Brasil quanto em outros países. O principal objetivo do Zeca é quebrar barreiras por meio da arte, levando uma mensagem contextualizada que toca o coração não apenas das crianças, mas também dos adultos que precisam de alegria e acolhimento.</p>
                 </div>
                 <div class="history-card">
+                    <img src="imagens/historia-projeto-agreste.jpg" alt="Projeto Agreste" class="history-photo">
                     <h3>Projeto Agreste</h3>
                     <p>Atuei diretamente em um projeto de justiça e transformação social em um bairro vulnerável da nossa cidade. Em parceria com uma escolinha de futebol, atendemos 150 crianças e adolescentes. Nosso trabalho unia o cuidado físico e espiritual: oferecíamos café da manhã e devocionais, mas também fomos além das quatro paredes. Realizamos cultos, bazares solidários, evangelismo nas ruas e visitas domiciliares, apresentando o Evangelho de forma prática às famílias.</p>
                 </div>
