@@ -10,6 +10,10 @@ isso evita links quebrados).
 - `livro-ubebewerawa.png`
 - `livro-haryporia.jpg`
 - `livro-upinima.jpg`
+- `etnia-indigena.jpg`
+- `etnia-cigano.jpg`
+- `etnia-quilombola.jpg`
+- `etnia-sertanejo.jpg`
 
 ## ⬜ Faltam enviar
 
