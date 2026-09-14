@@ -8,6 +8,8 @@ isso evita links quebrados).
 ## ✅ Já enviadas
 - `livro-na-ponta-da-lanca.png`
 - `livro-ubebewerawa.png`
+- `livro-haryporia.jpg`
+- `livro-upinima.jpg`
 
 ## ⬜ Faltam enviar
 
@@ -21,8 +23,6 @@ isso evita links quebrados).
 | `foto-perfil.jpg` | Sua foto de perfil (seção "Quem sou eu") | quadrada ou 4:3 |
 | `foto-caminhos.jpg` | Foto "Os Caminhos Percorridos" | quadrada ou 4:3 |
 | `grafismo-claro.png` | Grafismo decorativo (seção "Missão FarLands") | PNG com fundo transparente |
-| `livro-haryporia.jpg` | Capa do livro "Haryporia Tapy'yia Miwan" | vertical 2:3 (proporção de capa de livro) |
-| `livro-upinima.jpg` | Capa do livro "Ūpinima Yēga Purãgawa Mateus" | vertical 2:3 |
 | `foto-parceria.jpg` | Sua foto na seção "Convite à Parceria" | vertical ou paisagem |
 | `qrcode-whatsapp.png` | QR Code do WhatsApp | quadrado |
 
