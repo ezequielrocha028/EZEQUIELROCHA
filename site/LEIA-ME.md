@@ -12,6 +12,7 @@ Coloque as fotos na pasta `imagens/` com exatamente estes nomes. Enquanto uma fo
 | `imagens/perfil.jpg` | Seção "Quem sou eu" (foto vertical) |
 | `imagens/parceria.jpg` | Seção "Parceria" |
 | `imagens/qrcode-whatsapp.png` | QR Code do WhatsApp |
+| `imagens/galeria/01.jpg` até `08.jpg` | Galeria "Pés no campo" (8 fotos; a 01 aparece maior) |
 | `imagens/livros/haryporia.jpg` | Capa do livro Haryporia |
 | `imagens/livros/upinima.jpg` | Capa do livro Ūpinima |
 
