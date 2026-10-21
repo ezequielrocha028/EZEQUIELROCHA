@@ -225,6 +225,13 @@ body::after {
 .section--blue .eyebrow { color: var(--white); }
 .section--blue .eyebrow::before { background: var(--yellow); }
 
+/* faixa laranja: todo o texto em verde quase preto (laranja + branco não tem contraste) */
+.section--orange { background: var(--orange); color: var(--ink); }
+.section--orange .eyebrow { color: var(--ink); }
+.section--orange .eyebrow::before { background: var(--ink); }
+.section--orange .stat-n, .section--orange .stat-l, .section--orange .stat-d { color: var(--ink); }
+.section--orange .stat-d { font-weight: 500; }
+
 /* ---------- 3. Quem sou eu ---------- */
 .about { display: grid; gap: 48px; grid-template-columns: 1fr; align-items: start; }
 @media (min-width: 900px) { .about { grid-template-columns: 5fr 6fr; gap: 72px; } }

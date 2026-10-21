@@ -103,3 +103,32 @@ document.getElementById('flClose').addEventListener('click', () => {
 flDetails.addEventListener('toggle', () => {
   if (flDetails.open) flDetails.querySelectorAll('.reveal').forEach((el) => el.classList.add('visible'));
 });
+
+// Números da faixa "Os caminhos percorridos": contam de 0 até o valor ao aparecer na tela
+const counters = document.querySelectorAll('[data-count]');
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+function runCounter(el) {
+  const target = Number(el.dataset.count);
+  const prefix = el.dataset.prefix || '';
+  const duration = 1600;
+  const start = performance.now();
+  function frame(now) {
+    const t = Math.min((now - start) / duration, 1);
+    const eased = 1 - Math.pow(1 - t, 3); // começa rápido e desacelera no final
+    el.textContent = prefix + Math.round(target * eased);
+    if (t < 1) requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+}
+if (!reduceMotion && 'IntersectionObserver' in window) {
+  counters.forEach((el) => { el.textContent = (el.dataset.prefix || '') + '0'; });
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) {
+        runCounter(e.target);
+        counterObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.6 });
+  counters.forEach((el) => counterObserver.observe(el));
+}
