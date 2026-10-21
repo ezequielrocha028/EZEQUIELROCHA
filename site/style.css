@@ -280,6 +280,19 @@ body::after {
 .tags { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; }
 .tags li { border: 1px solid var(--line); padding: 6px 12px; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
 
+/* ---------- Chamada para parceria (fim da Atuação) ---------- */
+.cta-band {
+  margin-top: clamp(48px, 7vw, 80px);
+  background: var(--green); color: var(--ink);
+  padding: clamp(28px, 5vw, 56px);
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px 40px;
+}
+.cta-band h3 { color: var(--ink); margin-bottom: 10px; }
+.cta-band p { font-size: 1.1rem; font-weight: 500; max-width: 560px; }
+/* botão escuro para usar sobre o verde (texto branco sobre verde não tem contraste) */
+.btn--dark { background: var(--ink); color: var(--white); font-size: 1rem; padding: 18px 30px; }
+.btn--dark:hover { background: var(--yellow); color: var(--ink); }
+
 /* ---------- 5. FarLands ---------- */
 .fl-intro { display: grid; gap: 40px; grid-template-columns: 1fr; }
 .block { padding-top: clamp(56px, 8vw, 96px); margin-top: clamp(56px, 8vw, 96px); border-top: 1px solid var(--line); }
