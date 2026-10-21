@@ -2,9 +2,9 @@
 
 Para ver o site, abra o arquivo `index.html` no navegador.
 
-## Fotos que faltam
+## Fotos do site
 
-Coloque as fotos na pasta `imagens/` com exatamente estes nomes. Enquanto uma foto não existir, aparece um quadro verde no lugar dela.
+Todas as fotos já estão no lugar. Para trocar alguma, substitua o arquivo na pasta `imagens/` mantendo exatamente o mesmo nome:
 
 | Arquivo | Onde aparece |
 |---|---|
