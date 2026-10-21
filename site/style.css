@@ -308,6 +308,54 @@ body::after {
 .peoples { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; list-style: none; }
 .peoples li { background: var(--yellow); color: var(--ink); font-family: var(--display); font-size: 1.3rem; text-transform: uppercase; padding: 6px 16px; }
 
+/* ---------- FarLands (seção que abre e fecha) ---------- */
+.fl-section { padding: clamp(40px, 6vw, 72px) 0; }
+.fl-summary {
+  list-style: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: space-between; gap: 24px;
+  border: 1px solid var(--line); border-left: 3px solid var(--green);
+  background: var(--card);
+  padding: clamp(24px, 4vw, 44px);
+  transition: border-color 0.3s;
+}
+.fl-summary::-webkit-details-marker { display: none; }
+.fl-summary:hover { border-left-color: var(--yellow); }
+.fl-summary:focus-visible { outline: 3px solid var(--yellow); outline-offset: 3px; }
+.fl-summary-text { display: block; }
+.fl-summary .eyebrow { display: flex; align-items: flex-start; }
+.fl-summary .eyebrow::before { margin-top: 0.45em; }
+.fl-title { display: block; }
+.fl-hint {
+  display: block; margin-top: 14px;
+  font-size: 0.8rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--green);
+}
+.fl-hint .when-open { display: none; }
+.fl-details[open] .fl-hint .when-open { display: inline; }
+.fl-details[open] .fl-hint .when-closed { display: none; }
+.fl-icon {
+  flex-shrink: 0; position: relative;
+  width: clamp(48px, 6vw, 64px); height: clamp(48px, 6vw, 64px);
+  background: var(--green);
+}
+.fl-icon::before, .fl-icon::after {
+  content: ''; position: absolute; left: 50%; top: 50%;
+  width: 40%; height: 3px; background: var(--ink);
+  transform: translate(-50%, -50%); transition: transform 0.3s;
+}
+.fl-icon::after { transform: translate(-50%, -50%) rotate(90deg); }
+.fl-details[open] .fl-icon::after { transform: translate(-50%, -50%) rotate(0deg); }
+.fl-summary:hover .fl-icon { background: var(--yellow); }
+.fl-body { padding-top: clamp(40px, 6vw, 64px); animation: fl-in 0.4s ease; }
+@keyframes fl-in { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: none; } }
+.fl-close {
+  margin-top: clamp(48px, 7vw, 80px);
+  background: none; border: 1px solid var(--line); color: var(--white);
+  font: inherit; font-weight: 700; font-size: 0.85rem; letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 14px 22px; cursor: pointer;
+}
+.fl-close:hover { border-color: var(--green); color: var(--green); }
+@media (prefers-reduced-motion: reduce) { .fl-body { animation: none; } }
+
 /* ---------- 6. Parceria ---------- */
 .partner { display: grid; gap: 48px; grid-template-columns: 1fr; align-items: start; }
 @media (min-width: 1000px) { .partner { grid-template-columns: 1fr 1fr; gap: 64px; } }

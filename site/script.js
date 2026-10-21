@@ -90,3 +90,16 @@ lightbox.addEventListener('touchend', (e) => {
   if (Math.abs(dx) > 50) step(dx < 0 ? 1 : -1);
   touchX = null;
 });
+
+// FarLands: o link do menu abre a seção; o botão do final fecha e volta ao título
+const flDetails = document.getElementById('flDetails');
+document.querySelectorAll('a[href="#farlands"]').forEach((a) =>
+  a.addEventListener('click', () => { flDetails.open = true; }));
+document.getElementById('flClose').addEventListener('click', () => {
+  flDetails.open = false;
+  document.getElementById('farlands').scrollIntoView({ behavior: 'smooth' });
+});
+// garante que o conteúdo apareça ao abrir (animação de entrada)
+flDetails.addEventListener('toggle', () => {
+  if (flDetails.open) flDetails.querySelectorAll('.reveal').forEach((el) => el.classList.add('visible'));
+});

@@ -319,13 +319,21 @@
     </section>
 
     <!-- 6. MISSÃO FARLANDS -->
-    <section class="section section--alt" id="farlands">
+    <!-- Fica fechada; o visitante clica para abrir -->
+    <section class="section section--alt fl-section" id="farlands">
       <div class="wrap">
-        <div class="reveal">
-          <span class="eyebrow">O evangelho de forma culturalmente relevante</span>
-          <h2 class="display h-xl">Missão <span class="accent">FarLands</span></h2>
-          <p class="lead" style="margin-top: 28px; max-width: 820px">A missiologia da FarLands propõe uma ruptura radical com os modelos missionários colonialistas e paternalistas. Uma missiologia encarnacional, ecológica, contextual, linguística e antropológica, cujo objetivo não é ocidentalizar ninguém, mas ver florescer uma igreja <strong>genuinamente bíblica e autóctone</strong>, para que todos os povos exerçam o seu sacerdócio cultural ao Criador de tudo e todos.</p>
-        </div>
+        <details class="fl-details reveal" id="flDetails">
+          <summary class="fl-summary">
+            <span class="fl-summary-text">
+              <span class="eyebrow">O evangelho de forma culturalmente relevante</span>
+              <span class="display h-lg fl-title">Conheça a <span class="accent">FarLands</span></span>
+              <span class="fl-hint"><span class="when-closed">Clique para ver</span><span class="when-open">Clique para fechar</span></span>
+            </span>
+            <span class="fl-icon" aria-hidden="true"></span>
+          </summary>
+
+          <div class="fl-body">
+          <p class="lead" style="max-width: 820px">A missiologia da FarLands propõe uma ruptura radical com os modelos missionários colonialistas e paternalistas. Uma missiologia encarnacional, ecológica, contextual, linguística e antropológica, cujo objetivo não é ocidentalizar ninguém, mas ver florescer uma igreja <strong>genuinamente bíblica e autóctone</strong>, para que todos os povos exerçam o seu sacerdócio cultural ao Criador de tudo e todos.</p>
 
         <!-- Editorial -->
         <div class="block reveal">
@@ -397,6 +405,10 @@
             <p>Um projeto fundamentado no modelo apostólico do Novo Testamento: comunhão diária (Igreja Caseira), ensino sólido (Consolidação), sabedoria registrada e compartilhada (Produção Literária), Evangelho compreensível aos povos isolados (Tradução), fortalecimento dos irmãos (Serviço à Igreja) e envio a povos não alcançados (Mobilização).</p>
           </div>
         </div>
+
+          <button class="fl-close" type="button" id="flClose">Fechar FarLands ↑</button>
+          </div>
+        </details>
       </div>
     </section>
 
